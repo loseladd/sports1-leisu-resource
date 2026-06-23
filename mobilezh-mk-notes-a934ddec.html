@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK体育 · 有温度的赛事体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fce4c8 0%, #f9d4a8 35%, #f3c48a 70%, #eeb87a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #3a2c1e;
+        }
+
+        .card {
+            max-width: 760px;
+            width: 100%;
+            background: rgba(255, 250, 240, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 20px 40px -10px rgba(120, 70, 30, 0.25),
+                        0 8px 20px rgba(0,0,0,0.04);
+            padding: 2.8rem 2.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 540px) {
+            body { padding: 1.2rem 0.8rem; }
+            .card { padding: 2rem 1.4rem; border-radius: 36px 18px 36px 18px; }
+        }
+
+        /* 装饰点缀 */
+        .hero-badge {
+            display: inline-block;
+            background: #da8b4a;
+            color: #fef8ed;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            box-shadow: inset 0 1px 2px rgba(255,243,220,0.6);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #2f2213;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 small {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #7b5d3c;
+            margin-top: 0.35rem;
+            letter-spacing: 0.01em;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #5f472b;
+            border-left: 4px solid #c6824a;
+            padding-left: 1rem;
+            margin: 0.8rem 0 1.8rem 0;
+            font-weight: 380;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 480;
+            margin: 2.2rem 0 0.6rem 0;
+            color: #3d2e1a;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h2::before {
+            content: "✦";
+            color: #b8733a;
+            font-size: 0.9rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #3a2e1d;
+            font-weight: 360;
+        }
+
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.6rem 0 1rem;
+        }
+
+        .highlight-item {
+            background: #fcf2e3;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px 12px 40px 12px;
+            flex: 1 0 180px;
+            box-shadow: 0 2px 6px rgba(140, 90, 40, 0.05);
+            border: 1px solid #f2ddc2;
+        }
+
+        .highlight-item strong {
+            display: block;
+            font-weight: 500;
+            color: #4a3b28;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .highlight-item span {
+            font-size: 0.9rem;
+            color: #625137;
+        }
+
+        .use-case {
+            background: #fff7ec;
+            padding: 1.2rem 1.4rem;
+            border-radius: 28px 12px 28px 12px;
+            margin: 1.8rem 0;
+            border-left: 6px solid #c27e46;
+        }
+
+        .use-case p {
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem 1.2rem;
+            margin: 1.6rem 0 1rem;
+        }
+
+        @media (max-width: 480px) {
+            .faq-mini { grid-template-columns: 1fr; }
+            h1 { font-size: 2.1rem; }
+        }
+
+        .faq-mini dt {
+            font-weight: 470;
+            color: #563f27;
+            border-bottom: 1px dotted #dbb58b;
+            padding-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini dd {
+            font-size: 0.9rem;
+            color: #524432;
+            margin-bottom: 0.6rem;
+        }
+
+        .link-wrapper {
+            margin: 2rem 0 0.6rem 0;
+            text-align: center;
+        }
+
+        .link-wrapper a {
+            display: inline-block;
+            background: #b8793f;
+            color: #fefaf2;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 430;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            box-shadow: 0 6px 14px rgba(150, 90, 40, 0.2);
+            transition: all 0.2s;
+            border: 1px solid #e3b684;
+        }
+
+        .link-wrapper a:hover {
+            background: #a36833;
+            box-shadow: 0 8px 18px rgba(130, 75, 30, 0.25);
+            transform: scale(1.02);
+        }
+
+        .notice {
+            font-size: 0.85rem;
+            color: #7a654b;
+            background: #efe3d1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 32px;
+            margin-top: 2.2rem;
+            text-align: center;
+            border: 1px solid #e3cfb6;
+        }
+
+        .footer-note {
+            margin-top: 1.2rem;
+            font-size: 0.78rem;
+            color: #7c6950;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e4cfb6;
+            margin: 1.6rem 0 0.6rem;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <!-- 徽标 -->
+    <div class="hero-badge">运动 · 日常 · 温度</div>
+
+    <h1>
+        MK体育
+        <small>不只是比分，更是动态的故事线</small>
+    </h1>
+
+    <div class="subhead">
+        竞技的魅力往往藏在细节里——从赛前布局到临场应变，从数据走势到情绪节奏。
+    </div>
+
+    <!-- 摘要式介绍 -->
+    <p>
+        <strong>MK体育</strong> 一直尝试为关注体育的朋友提供一种更安静的观看方式：不制造喧哗，不堆砌弹窗，而是把赛事进程、球队变动、球员状态这些信息梳理成可读的线索。你不需要在数不清的页面之间跳转，也不必被迫接收推送轰炸——所有内容都围绕你真正关心的联赛和队伍展开。
+    </p>
+
+    <!-- 亮点卡片网格 -->
+    <div class="highlight-grid">
+        <div class="highlight-item">
+            <strong>赛程脉络</strong>
+            <span>按联赛、轮次、日期整理，一眼看清未来一周焦点战</span>
+        </div>
+        <div class="highlight-item">
+            <strong>动态短评</strong>
+            <span>每场比赛配有简短的节奏笔记，不剧透但保留悬念</span>
+        </div>
+        <div class="highlight-item">
+            <strong>阵容轮换</strong>
+            <span>首发、替补、伤病回归——变化背后总有原因</span>
+        </div>
+    </div>
+
+    <!-- 使用建议 / 场景感段落 -->
+    <div class="use-case">
+        <p><strong>🎯 适合这样使用</strong></p>
+        <p>如果你习惯在周末早晨打开页面，扫一眼当天的对阵和近期状态，<strong>MK体育</strong> 的列表式布局应该能让你感到轻松。没有自动播放的视频，也没有催促你下注的横幅。你可以在第二屏幕挂着，等比赛开始后偶尔回来看一眼实时缩写——一切都由你自己控制节奏。</p>
+        <p style="margin-top: 0.6rem;">对于深度关注某一联赛（例如欧冠、英超、西甲、NBA季后赛）的用户，按赛事分组的目录结构能帮你快速定位，不必在杂讯里浪费时间。</p>
+    </div>
+
+    <!-- FAQ 摘要  -->
+    <h2>常见疑问 · 简答</h2>
+    <dl class="faq-mini">
+        <dt>需要注册才能浏览吗？</dt>
+        <dd>大部分内容直接可见，部分深度数据页可能需要轻量验证，但绝无强制手机绑定。</dd>
+
+        <dt>数据更新频率如何？</dt>
+        <dd>核心联赛实时滚动更新，次级联赛每 2–5 分钟同步一次。</dd>
+
+        <dt>是否有手机版？</dt>
+        <dd>页面自适应，浏览器直接访问即可，也可添加到主屏幕作为轻应用。</dd>
+
+        <dt>涉及哪些运动种类？</dt>
+        <dd>足球、篮球为主，兼顾网球、橄榄球、电竞等主流项目。</dd>
+    </dl>
+
+    <!-- 链接：自然嵌入句子中，符合要求 -->
+    <div class="link-wrapper">
+        <p style="margin-bottom: 0.5rem;">如果你对以上叙述有所共鸣，可以前往 <a href="https://mobilezh-mk.com">MK体育</a> 进一步浏览当日赛历与队伍档案。</p>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="notice">
+        ⚡ 提示：页面内容仅供信息参考，不构成任何投注或博彩建议。<br>
+        数据源均来自公开赛事统计，部分延迟属于正常范围。请理性观看，享受运动本身。
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        — 在喧闹之外，安安静静看一场比赛也是一件好事。
+    </div>
+</div>
+
+</body>
+</html>
